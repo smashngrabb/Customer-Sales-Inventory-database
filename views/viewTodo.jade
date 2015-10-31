@@ -1,0 +1,27 @@
+extends layout.jade
+
+block title
+   title= title
+
+block body
+    h1 #{todo[0].message}
+    a(href="/Todo/Edit/" + todo[0].todo_id, class="btn btn-default") Edit Todo
+    ul(class="list-group")
+    each val in tasks
+      if val.status == 0
+        li(class="list-group-item")
+          a(href='/Todo/Tasks/Complete/' + val.task_id, class="btn btn-default btn-xs") OK
+          | &nbsp &nbsp
+          =val.message
+       else
+        li(class="list-group-item")
+          i
+           =val.message
+
+    form(name="newTaskResponse", action="/Todo/Tasks/New", method="post")
+      .form-group
+        input(type="hidden", class="form-control", name="todo_id", value=todo[0].todo_id, required)
+        input(type="text", class="form-control", name="message",placeholder="Submit new task", required)
+        br
+        button(type="submit", class="btn btn-primary") Add new Task
+

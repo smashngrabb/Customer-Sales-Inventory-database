@@ -1,0 +1,59 @@
+extends layout.jade
+
+block title
+   title= title
+
+block body
+    h1 Item List
+    a(href="/Products/New", class="btn btn-primary") Add new Product
+    table.table-hover.table.table-striped
+     thead
+      tr
+       th Product ID
+       th Product Name
+       th Quantity
+       th Product Price
+       th Actions
+
+     tbody
+      each val in products
+        if val.quantity > 59
+           tr(style="background-color: #B2F7B7")
+            td= val.product_id
+            td= val.name
+            td= val.quantity
+            td= val.default_price
+            td
+              a(href="/Products/Edit/" + val.product_id, class="btn btn-default btn-xs") Edit
+        else if val.quantity > 29
+           tr(style="background-color: #F5F7B2")
+            td= val.product_id
+            td= val.name
+            td= val.quantity
+            td= val.default_price
+            td
+              a(href="/Products/Edit/" + val.product_id, class="btn btn-default btn-xs") Edit
+        else if val.quantity > 14
+           tr(style="background-color: #F7BAB2")
+            td= val.product_id
+            td= val.name
+            td= val.quantity
+            td= val.default_price
+            td
+              a(href="/Products/Edit/" + val.product_id, class="btn btn-default btn-xs") Edit
+        else if val.quantity > 0
+           tr(style="background-color: #E5B2F7")
+            td= val.product_id
+            td= val.name
+            td= val.quantity
+            td= val.default_price
+            td
+              a(href="/Products/Edit/" + val.product_id, class="btn btn-default btn-xs") Edit
+        else
+           tr
+            td= val.product_id
+            td= val.name
+            td= val.quantity
+            td= val.default_price
+            td
+              a(href="/Products/Edit/" + val.product_id, class="btn btn-default btn-xs") Edit

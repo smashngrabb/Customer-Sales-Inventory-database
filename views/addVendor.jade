@@ -1,0 +1,35 @@
+extends layout.jade
+
+block title
+	title= title
+
+block body
+	h1 Add new vendor
+	form(name="newVendor", action="/Vendors/New", method="post")
+		.form-group
+			label(for="First Name") Name:
+			input(type="text", class="form-control", name="name")
+		.form-group
+			label(for="Last Name") Contact Person:
+			input(type="text", class="form-control", name="contact_person")
+		.form-group
+			label(for="") Phone Number:
+			input(type="text", class="form-control", name="phone_number")
+		.form-group
+			label(for="phone") Website:
+			input(type="text", class="form-control", name="website")
+		.form-group
+			label(for="address") Email:
+			input(type="text", class="form-control", name="email")
+		.form-group
+			label(for="Username") Address:
+			input(type="text", class="form-control", name="address")
+		.form-group
+				label(for="city") Country:
+				input(type="text", class="form-control", name="country")
+		.form-group
+			label(for="zip") Notes:
+			textarea(class="form-control" rows="3" name="notes")
+		button(type="submit", class="btn btn-primary") Add new Vendor
+		br
+		br

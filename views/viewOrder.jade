@@ -34,19 +34,19 @@ block body
 					- grossTotal = grossTotal + product.product_second_stone_earning + product.product_third_stone_earning
 				else
 					- grossTotal = grossTotal + product.product_second_stone_earning + product.product_third_stone_earning*(product.order_quantity-1)
-		
+
 			default
-				- grossTotal = grossTotal + product.product_third_stone_earning*product.order_quantity	
-	
+				- grossTotal = grossTotal + product.product_third_stone_earning*product.order_quantity
+
 	table.table.table-striped
 		thead
 			tr
 				th First Name
 				th Last Name
 				th Email
-				th Username 
+				th Username
 		tbody
-      
+
 			tr
 				td= order[0].first_name
 				td= order[0].last_name
@@ -92,6 +92,8 @@ block body
 						td= val.price*val.order_quantity
 						td
 							a(href="/Orders/Item/" + val.order_details_id, class="btn btn-default btn-xs") Edit
+							| 
+							a(href="/Products/" + val.product_id, class="btn btn-default btn-xs") View Product
 						- total += val.price*val.order_quantity
 						- inventoryCost += val.order_inventory_cost*val.order_quantity
 	a(href="/Orders/Item/New/" + order[0].order_id, class="btn btn-primary") Add new Item

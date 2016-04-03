@@ -19,8 +19,6 @@ block body
 			label(for="date") Date:
 			input(type="date", data-date-format="MM/DD/YYYY" class="form-control", name="date")
 		.form-group
-			input(type="hidden", value=0 class="form-control", name="promotion_code")
-		.form-group
 			label(for="additional_cost") Additional Cost:
 			input(type="number" step="any" , class="form-control", name="additional_cost", value=0)
 		.form-group
@@ -41,9 +39,9 @@ block body
 					select: function( event, ui ) {
 					$( "#platform_name" ).val( ui.item.name );
 					$( "#platform_id" ).val( ui.item.platform_id );
-			 
+
 			        return false;
-			      } 
+			      }
 				  });
-			 
+
 			  });

@@ -48,3 +48,13 @@ module.exports.UpdateCustomer = function (customer, callback) {
                 callback(customer.customer_id);
             });
 };
+
+module.exports.ProductsByCustomer = function (customer_id, callback) {
+  pool.query('SELECT products.name as ProductName, order_details.quantity as ProductQuantity from products INNER JOIN order_details on order_details.product_id = products.product_id INNER JOIN orders on order_details.order_id = orders.order_id WHERE orders.customer_id = ' + customer_id + ' ORDER BY ProductName ASC',
+    function (err, result) {
+      if (err)
+        console.log(err);
+      else
+        callback(result);
+      });
+};

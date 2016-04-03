@@ -9,8 +9,17 @@ module.exports.GetAllOrders = function (callback) {
             callback(result);
 }); };
 
+module.exports.GetAllOrdersByProduct = function (product_id, callback) {
+  pool.query('SELECT customers.first_name as FirstName, customers.last_name as LastName, orders.order_id as OrderId, order_details.quantity as Quantity, orders.date as Date, order_details.price as Price FROM order_details INNER JOIN orders on order_details.order_id = orders.order_id INNER JOIN customers on orders.customer_id = customers.customer_id where order_details.product_id = ' + product_id + ' ORDER BY orders.date DESC', function (err, result) {
+    if (err)
+      console.log(err);
+    else
+      callback(result);
+  });
+};
+
 module.exports.GetOrderInfo = function (order_id, callback) {
-    pool.query('select *, platforms.name as platform_name, orders.notes as order_notes, promotion_code FROM orders INNER JOIN customers on orders.customer_id = customers.customer_id INNER JOIN platforms on orders.platform_id = platforms.platform_id where orders.order_id = ' + order_id, function (err, result) {
+    pool.query('select *, platforms.name as platform_name, orders.notes as order_notes FROM orders INNER JOIN customers on orders.customer_id = customers.customer_id INNER JOIN platforms on orders.platform_id = platforms.platform_id where orders.order_id = ' + order_id, function (err, result) {
         if (err)
             console.log(err);
         else
@@ -67,4 +76,3 @@ module.exports.UpdateOrderItem = function(OrderItem, callback) {
         else
             callback(OrderItem.order_id);
 }); };
-

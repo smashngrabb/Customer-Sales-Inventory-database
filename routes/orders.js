@@ -57,7 +57,7 @@ router.get('/Edit/:id', function (req, res) {
 // --- POST
 router.post('/Edit', function (req, res) {
     orderFunctions.UpdateOrder(req.body, function (order_id) {
-       res.redirect('/Orders/' + order_id); 
+       res.redirect('/Orders/' + order_id);
 }); });
 
 

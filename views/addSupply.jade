@@ -1,0 +1,53 @@
+extends layout.jade
+
+block title
+	title= title
+block head
+	link(rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css")
+	script(src="//code.jquery.com/jquery-1.10.2.js")
+	script(src="//code.jquery.com/ui/1.11.4/jquery-ui.js")
+block body
+	h1 Add Supplies
+	form(name="addSupplies", action="/Products/Item/Supply/New/", method="post")
+		.form-group
+			input(type="hidden" class="form-control" id="product_id" name="product_id")
+			input(type="hidden" value=item.vendor_id class="form-control" id="vendor_id" name="vendor_id")
+		.form-group
+			label(for="product_id") Product Name
+			input(type="text", value=item.name class="form-control", id="product_name")
+		.form-group
+			label(for="date") Date:
+			input(type="date", data-date-format="MM/DD/YYYY" class="form-control", name="date_added")
+		.form-group
+			label(for="quantity") Quantity
+			input(type="text", value=1 class="form-control", name="quantity")
+		.form-group
+			label(for="Weight") Weight
+			input(type="text", value=1 class="form-control", name="weight")
+		.form-group
+			label(for="Cost") Cost
+			input(type="number", value=1 class="form-control", name="cost")
+		.form-group
+			label(for="Quality") Quality
+			input(type="text" class="form-control", name="quality")
+		.form-group
+			label(for="Feedback_message") Notes
+			input(type="text" class="form-control", name="notes")
+		button(type="submit", class="btn btn-primary") Submit Item
+		script(type="text/javascript").
+			$(function() {
+				var data1 = JSON.parse('!{data}');
+				$( "#product_name" ).autocomplete({
+				minLength: 0,
+				source: data1,
+				focus: function( event, ui ) {
+					$( "#product_name" ).val( ui.item.name );
+					return false;
+					},
+					select: function( event, ui ) {
+					$("#product_name").val( ui.item.name );
+					$("#product_id").val( ui.item.product_id );
+			        return false;
+			      }
+				  });
+			  });

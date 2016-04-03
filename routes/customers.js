@@ -29,10 +29,12 @@ router.get('/:id/', function (req, res) {
             res.send('Customer does not exist <br> <a href=/Customers>Go back</a>');}
         else {
             customerFunctions.GetOrders(req.params.id, function (orders) {
+              customerFunctions.ProductsByCustomer(req.params.id, function (products) {
                 res.render('viewCustomer', {
                     title: 'View Customer',
                     customer: results,
-                    orders: orders }); }); } }); });
+                    orders: orders,
+                    products: products });});}); }});});
 
 // Edit Customer
 router.get('/Edit/:id', function (req, res) {
@@ -47,7 +49,7 @@ router.get('/Edit/:id', function (req, res) {
 // --- POST
 router.post('/Edit/:id', function (req, res) {
     var Customer = req.body;
-    customerFunctions.UpdateCustomer(Customer, function () { 
+    customerFunctions.UpdateCustomer(Customer, function () {
         res.redirect('/Customers/' + req.params.id);
     });
 });

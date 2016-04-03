@@ -24,7 +24,7 @@ block body
             td= val.quantity
             td= val.default_price
             td
-              a(href="/Products/Edit/" + val.product_id, class="btn btn-default btn-xs") Edit
+              a(href="/Products/" + val.product_id, class="btn btn-default btn-xs") View
         else if val.quantity > 29
            tr(style="background-color: #F5F7B2")
             td= val.product_id
@@ -32,7 +32,7 @@ block body
             td= val.quantity
             td= val.default_price
             td
-              a(href="/Products/Edit/" + val.product_id, class="btn btn-default btn-xs") Edit
+              a(href="/Products/" + val.product_id, class="btn btn-default btn-xs") View
         else if val.quantity > 14
            tr(style="background-color: #F7BAB2")
             td= val.product_id
@@ -40,7 +40,7 @@ block body
             td= val.quantity
             td= val.default_price
             td
-              a(href="/Products/Edit/" + val.product_id, class="btn btn-default btn-xs") Edit
+              a(href="/Products/" + val.product_id, class="btn btn-default btn-xs") View
         else if val.quantity > 0
            tr(style="background-color: #E5B2F7")
             td= val.product_id
@@ -48,7 +48,7 @@ block body
             td= val.quantity
             td= val.default_price
             td
-              a(href="/Products/Edit/" + val.product_id, class="btn btn-default btn-xs") Edit
+              a(href="/Products/" + val.product_id, class="btn btn-default btn-xs") View
         else
            tr
             td= val.product_id
@@ -56,4 +56,4 @@ block body
             td= val.quantity
             td= val.default_price
             td
-              a(href="/Products/Edit/" + val.product_id, class="btn btn-default btn-xs") Edit
+              a(href="/Products/" + val.product_id, class="btn btn-default btn-xs") View

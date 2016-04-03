@@ -1,0 +1,25 @@
+extends layout.jade
+
+block title
+   title= title
+
+block body
+    h1 Vendor List
+    a(href="/Vendors/New", class="btn btn-primary") Add new Vendor
+    br
+    br
+    table.table-hover.table.table-striped
+     thead
+      tr
+       th Name
+       th Website
+       th Notes
+       th Actions
+     tbody
+      each val in vendors
+       tr
+        td= val.name
+        td= val.website
+        td= val.notes
+        td
+         a(href='/Vendors/' + val.vendor_id, class="btn btn-default btn-xs") View vendor

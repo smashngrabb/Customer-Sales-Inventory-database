@@ -23,14 +23,16 @@ var Customers = require('./routes/customers');
 var Orders = require('./routes/orders');
 var Products = require('./routes/products');
 var Feedbacks = require('./routes/feedbacks');
-var Todo = require('./routes/todo');
+var Vendors = require('./routes/vendors');
+//var Todo = require('./routes/todo');
 
 app.use('/', Home);
 app.use('/Customers', Customers);
 app.use('/Orders', Orders);
 app.use('/Products', Products);
-app.use('/Feedbacks', Feedbacks);
-app.use('/Todo', Todo);
+//app.use('/Feedbacks', Feedbacks);
+app.use('/Vendors', Vendors);
+//app.use('/Todo', Todo);
 
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

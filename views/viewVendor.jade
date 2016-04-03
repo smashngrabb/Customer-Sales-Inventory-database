@@ -1,0 +1,64 @@
+extends layout.jade
+
+block title
+	title= title
+
+block body
+
+	h1 View Vendor
+	a(href="/Vendors/Edit/" + vendor[0].vendor_id, class="btn btn-default") Edit Vendor
+	table.table.table-striped
+		thead
+			tr
+				th Name
+				th Contact person
+				th Email
+		tbody
+
+			tr
+				td= vendor[0].name
+				td= vendor[0].contact_person
+				td= vendor[0].email
+		table.table.table-striped
+			thead
+				tr
+					th Website
+					th Phone Number
+					th Address
+					th Country
+			tbody
+
+				tr
+					td= vendor[0].website
+					td= vendor[0].phone_number
+					td= vendor[0].address
+					td= vendor[0].country
+		if vendor[0].notes
+			br
+			br
+			h3 Notes
+			blockquote
+				p= vendor[0].notes
+			br
+		p
+			a(href="/Products/Item/Supply/New/" + vendor[0].vendor_id, class="btn btn-primary") Add new Supply
+		br
+		table.table.table-striped
+			thead
+				tr
+					th Product name
+					th Quantity
+					th Date
+					th Cost
+					th Actions
+			tbody
+			each product in vendor_product
+				tr
+					td= product.name
+					td= product.ProductQuantity
+					td= product.date_added
+					td= product.cost
+					td
+						a(href="/Products/Item/Supply/" + product.unique_id, class="btn btn-default btn-xs") View supply
+						| 
+						a(href="/Products/" + product.product_id, class="btn btn-default btn-xs") View product

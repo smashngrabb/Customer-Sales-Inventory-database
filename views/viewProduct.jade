@@ -1,0 +1,91 @@
+extends layout.jade
+
+block title
+	title= title
+
+block body
+
+	h1 View Product
+	a(href="/Products/Edit/" + product[0].product_id, class="btn btn-default") Edit Product
+	| &nbsp
+	a(href="/Vendors/", class="btn btn-primary") Add new Supply
+
+	- var totalSold = 0
+	each item in orders
+		- totalSold = totalSold + item.Quantity
+	br
+	br
+	table.table.table-striped
+		thead
+			tr
+				th Name
+				th Default price
+				th Quantity available
+				th Total Sold
+		tbody
+			tr
+				td= product[0].name
+				td= product[0].default_price
+				td= product[0].quantity
+				td= totalSold
+	table.table.table-striped
+		thead
+			tr
+				th First stone
+				th Second stone
+				th Third stone
+				th Inventory Cost
+		tbody
+			tr
+				td= product[0].first_stone_earning
+				td= product[0].second_stone_earning
+				td= product[0].third_stone_earning
+				td= product[0].inventory_cost
+				
+	if supplies.length
+		br
+		h3 Supplies
+		table.table.table-striped
+			thead
+				tr
+					th Supplier
+					th Date
+					th Quantity
+					th Quality
+					th Cost
+					th Notes
+					th Actions
+			tbody
+			each supply in supplies
+				tr
+					td= supply.name
+					td= supply.date_added
+					td= supply.quantity
+					td= supply.quality
+					td= supply.cost
+					td= supply.SupplyNotes
+					td
+						a(href="/Products/Item/Supply/" + supply.unique_id, class="btn btn-default btn-xs") EDIT
+
+	if orders.length
+		br
+		h3 Orders
+		table.table.table-striped
+			thead
+				tr
+					th First Name
+					th Last Name
+					th Date
+					th Quantity
+					th Price
+					th Actions
+			tbody
+			each order in orders
+				tr
+					td= order.FirstName
+					td= order.LastName
+					td= order.Date
+					td= order.Quantity
+					td= order.Price
+					td
+						a(href="/Orders/" + order.OrderId, class="btn btn-default btn-xs") VIEW ORDER

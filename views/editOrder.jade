@@ -21,13 +21,11 @@ block body
 			label(for="date") Date:
 			input(type="date", value=order[0].date data-date-format="MM/DD/YYYY" class="form-control", name="date")
 		.form-group
-			input(type="hidden", value=order[0].promotion_code class="form-control", name="promotion_code")
-		.form-group
 			label(for="additional_cost") Additional Cost:
 			input(type="text", value=order[0].additional_cost class="form-control", name="additional_cost")
 		.form-group
 			label(for="order_notes") Order Notes:
-			input(type="text", value=order[0].notes class="form-control", name="notes")
+			input(type="text", value=order[0].order_notes class="form-control", name="notes")
 		button(type="submit", class="btn btn-success") Submit Changes
 		script(type="text/javascript").
 			$(function() {
@@ -43,9 +41,9 @@ block body
 					select: function( event, ui ) {
 					$( "#platform_name" ).val( ui.item.name );
 					$( "#platform_id" ).val( ui.item.platform_id );
-			 
+
 			        return false;
-			      } 
+			      }
 				  });
-			 
+
 			  });

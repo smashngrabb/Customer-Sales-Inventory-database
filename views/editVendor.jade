@@ -1,0 +1,36 @@
+extends layout.jade
+
+block title
+	title= title
+
+block body
+	h1 Edit customer
+	form(name="editVendor", action="/Vendors/Edit/" + vendor[0].vendor_id, method="post")
+		input(type="hidden", name="vendor_id", value=vendor[0].vendor_id)
+		.form-group
+			label(for="Name") Name:
+			input(type="text", class="form-control",rows="1" name="name" value=vendor[0].name)
+		.form-group
+			label(for="Last Name") Contact person:
+			input(type="text", class="form-control",rows="1" name="contact_person" value=vendor[0].contact_person)
+		.form-group
+			label(for="Phone number") Phone Number:
+			input(type="text", class="form-control",rows="1" name="phone_number" value=vendor[0].phone_number)
+		.form-group
+			label(for="website") Website:
+			input(type="text", class="form-control",rows="1" name="website" value =vendor[0].website)
+		.form-group
+			label(for="email") Email:
+			input(type="text", class="form-control",rows="1" name="email" value =vendor[0].email)
+		.form-group
+			label(for="address") Address:
+			input(type="text", class="form-control",rows="1" name="address" value=vendor[0].address)
+		.form-group
+			label(for="country") Country:
+			input(type="text", class="form-control",rows="1" name="country" value=vendor[0].country)
+		.form-group
+			label(for="notes") Notes:
+			textarea(class="form-control" rows="3" name="notes")=vendor[0].notes
+		button(type="submit", class="btn btn-success") Submit Changes
+		br
+		br

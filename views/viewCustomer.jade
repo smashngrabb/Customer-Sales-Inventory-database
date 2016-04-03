@@ -24,7 +24,7 @@ block body
 				th Dollars spent
 				th Number of orders
 		tbody
-      
+
 			tr
 				td= customer[0].first_name
 				td= customer[0].last_name
@@ -46,7 +46,7 @@ block body
 				th ZIP code
 				th Country
 		tbody
-      
+
 			tr
 				td= customer[0].username
 				td= customer[0].phone_number
@@ -62,24 +62,28 @@ block body
 			p= customer[0].notes
 		br
 
-	h3 Orders
+	if orders.length
+		h3 Orders
+		table.table.table-striped
+			thead
+				tr
+					th Order Date
+					th Platform
+					th Date
+					th Total
+					th Actions
+			tbody
+			each order in orders
+				tr
+					td= order.date
+					td= order.name
+					td= order.date
+					td= order.Total
+					td
+						a(href="/Orders/" + order.order_id, class="btn btn-default btn-xs") View order
 
-	table.table.table-striped
-		thead
-			tr
-				th Order Date
-				th Platform
-				th Date
-				th Total
-				th Actions
-		tbody
-		each order in orders
-			tr
-				td= order.date
-				td= order.name
-				td= order.date
-				td= order.Total
-				td 
-					a(href="/Orders/" + order.order_id, class="btn btn-default btn-xs") View order
-
-
+	if products.length
+		h3 Products Bought
+		ul.list-group
+			each product in products
+				li.list-group-item #{product.ProductName + ' x ' +product.ProductQuantity)

@@ -7,20 +7,15 @@ html
 		block title
 	body
 	.container
-		ul.list-inline
-			li
-				a(href="/") Home
-			li
-				strong
-					a(href="/Customers") List all Customers
-			li
-				a(href="/Customers/New") New Customer
-			li
-				strong
-					a(href="/Orders") List all orders
-			li
-				a(href="/Products") All Products
-			li
-				strong
-					a(href="/Feedbacks") All Feedbacks
+		nav.navbar.navbar-default
+			div.navbar-header
+				ul.nav.navbar-nav
+					li
+							a(href="/Customers") All Customers
+					li
+						a(href="/Orders") All orders
+					li
+						a(href="/Products") All Products
+					li
+						a(href="/Vendors/") All Vendors
 		block body

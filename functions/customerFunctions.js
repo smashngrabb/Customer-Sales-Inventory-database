@@ -40,7 +40,7 @@ module.exports.GetOrders = function (customer_id, callback) {
 
 module.exports.UpdateCustomer = function (customer, callback) {
     pool.query('UPDATE customers SET first_name = ?, last_name = ?, email = ?, username = ?, phone_number = ?, address = ?, city = ?, state = ?, zip = ?, country = ?, notes = ? WHERE customer_id = ?',
-      [customer.first_name, customer.last_name, customer.email, customer.username, customer.phone_number, customer.address, customer.city, customer.state, customer.zip, customer.Country, customer.notes, customer.customer_id] ,
+      [customer.first_name, customer.last_name, customer.email, customer.username, customer.phone_number, customer.address, customer.city, customer.state, customer.zip, customer.country, customer.notes, customer.customer_id] ,
         function (err) {
             if (err)
                 console.log(err);

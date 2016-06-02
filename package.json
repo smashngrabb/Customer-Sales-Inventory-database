@@ -1,11 +1,11 @@
 {
   "name": "Customer-Sales-Inventory-database",
-  "version": "0.4.030416",
+  "version": "0.5.020616",
   "description": "Customer-Sales-Inventory-database",
   "author": {
     "name": "Mateo Karadža",
     "email": "mbalkana@live.com",
-    "website": "http://mateokaradza.com/"
+    "website": "http://mateokaradza.from.hr/"
   },
   "dependencies": {
     "express": "~4.9.0",
